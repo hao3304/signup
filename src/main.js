@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
-import App from './App'
+import Main from './Main.vue'
 import 'lib-flexible'
 
 Vue.use(VueRouter)
@@ -16,5 +16,5 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(Main)
 }).$mount('#app-box')
