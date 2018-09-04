@@ -59,12 +59,7 @@
 </script>
 
 <style lang="less">
-  @import '~vux/src/styles/reset.less';
-  @import "//at.alicdn.com/t/font_820894_wwcn7q3wb7j.css";
-
-  body,html,#app {
-    height: 100%;
-  }
+  @import "./style/index.less";
 
   #app {
 
@@ -89,7 +84,8 @@
         }
 
         &__label {
-          font-size: 18px;
+          margin-top: 5px;
+          font-size: 20px;
         }
       }
 

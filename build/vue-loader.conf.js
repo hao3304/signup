@@ -21,6 +21,6 @@ module.exports = {
     image: 'xlink:href'
   },
   postcss: function () {
-    return [px2rem({rootValue:75})];
+    return [px2rem({rootValue:75,selectorBlackList: [/dp-/,/scroller/, /weui-cell__bd:after/, /weui-cell__ft:after/]})];
   }
 }
