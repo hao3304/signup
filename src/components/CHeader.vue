@@ -31,8 +31,8 @@
 
 <style lang="less" scoped>
   .header {
-    height: 100px;
-    line-height: 100px;
+    height: 1.333333rem;
+    line-height: 1.333333rem;
 
     background-color: #3b3b3b;
     display: flex;
@@ -40,7 +40,7 @@
     align-items: center;
 
     &__left,&__right {
-      width: 100px;
+      width: 1.333333rem;
       height: 100%;
       display: flex;
       align-items: center;
@@ -59,7 +59,7 @@
     &__title {
       text-align: center;
       flex: 1;
-      font-size: 36px;
+      font-size: .48rem;
       height: 100%;
 
     }

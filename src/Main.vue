@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+  <router-view  v-transition></router-view>
 </template>
 <script>
     export default {

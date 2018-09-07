@@ -4,42 +4,44 @@
     <div class="page-login__content">
         <div class="page-login__logo">
         </div>
-
       <div class="page-login__form">
-        <div class="page-login__input">
-          <input type="text" v-model="form.mobile" placeholder="请输入手机号">
-        </div>
-        <div class="page-login__input">
-          <input type="text" v-model="form.card"  placeholder="请输入身份证号码">
-        </div>
+         <mu-text-field v-model="form.mobile" placeholder="请输入手机号" full-width></mu-text-field>
+         <mu-text-field v-model="form.password"  placeholder="请输入密码" type="password" full-width></mu-text-field><br/>
+         <div class="page-login__button">
+           <mu-button full-width large  color="success">登录</mu-button>
+         </div>
 
-        <x-button @click.native="onClick" class="page-login__button" type="primary">
-          登录
-        </x-button>
+        <p class="page-login__bottom">
+          <a href="javascript:;" style="color:#666;" @click="onSignUp">注册账号</a>
+          |
+          <a href="javascript:;">忘记密码？</a>
+        </p>
+
       </div>
     </div>
   </div>
 </template>
 <script>
   import CHeader from '@/components/CHeader.vue'
-  import { XButton } from 'vux'
   export default {
     name: "Login",
     data() {
       return {
         form: {
           mobile: '15068218888',
-          card: '330482168972445214'
+          password: '123456'
         }
       }
     },
     components: {
-      CHeader,
-      XButton
+      CHeader
     },
     methods: {
       onClick() {
         this.$router.push({name: 'home'})
+      },
+      onSignUp() {
+        this.$router.push({name: 'signup'})
       }
     }
   }
@@ -52,33 +54,33 @@
   .page-login {
     background-color: #fff;
     height: 100%;
+    overflow: hidden;
 
     &__logo {
-      height: 400px;
+      height: 5.333333rem;
       background: url("~@/assets/logo.png") no-repeat center center;
-      background-size: 250px;
+      background-size: 3.333333rem;
     }
 
     &__form {
-      padding: 0 68px;
+      padding: 0 .906667rem;
     }
 
     &__button {
-      height: 90px;
-      margin-top: 60px;
+      margin-top: .266667rem;
     }
 
-    &__input {
+    &__bottom {
       text-align: center;
-      border-bottom: 2px solid #ddd;
-      margin-bottom: 20px;
-      margin-top: 20px;
-      input {
-        font-size: 32px;
-        width: 100%;
-        border: none;
-        height: 64px;
+      margin-top: .533333rem;
+      font-size: .4rem;
+
+      a {
+        margin: 0 .133333rem;
       }
+
+
     }
+  
   }
 </style>

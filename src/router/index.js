@@ -7,6 +7,7 @@ import My from '@/views/My'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
 import Sign from '@/views/Sign'
+import SignUp from '@/views/SignUp'
 import App from '../App'
 
 Vue.use(Router)
@@ -27,6 +28,11 @@ export default new Router({
       path: '/sign',
       name: 'sign',
       component: Sign
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: SignUp
     },
     {
       path: '/app',
