@@ -9,6 +9,8 @@
         <div class="page-my__content-mobile">
           15068218600
         </div>
+
+        <p class="page-my__content-card">身份证：330482198901122332</p>
       </div>
       <group>
         <cell title="个人信息" is-link></cell>
@@ -94,7 +96,13 @@
       &-mobile {
         text-align: center;
         font-size: 48px;
-        margin-top: 44px;
+        margin-top: 34px;
+      }
+
+      &-card{
+        text-align: center;
+        font-size: 30px;
+        color: #666;
       }
     }
   }

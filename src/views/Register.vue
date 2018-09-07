@@ -64,7 +64,6 @@
       .weui-btn {
         height: 90px;
         margin-top: 45px;
-        font-size: 34px;
       }
 
     }
