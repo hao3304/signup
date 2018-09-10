@@ -46,19 +46,19 @@
     position: relative;
     height: 100%;
     .vux-tab-container {
-      height: 92px;
+      height: 1.226667rem;
       .vux-tab {
-        height: 92px;
+        height: 1.226667rem;
 
         .vux-tab-item {
-          line-height: 92px;
-          font-size: 28px;
+          line-height: 1.226667rem;
+          font-size: .373333rem;
         }
       }
     }
 
     &__content {
-      top: 192px;
+      top: 2.56rem;
       bottom: 0;
       left: 0;
       right: 0;
@@ -73,27 +73,27 @@
     &__item {
       display: flex;
       box-sizing: border-box;
-      height: 163px;
-      padding: 48px 50px !important;
+      height: 2.173333rem;
+      padding: .64rem .666667rem !important; 
       &-pic {
-        width: 168px;
+        width: 2.24rem;
         font-size: 0;
         img {
-          height: 96px;
+          height: 1.28rem;
           width: 100%;
         }
       }
 
       &-content {
-        padding-left: 36px;
+        padding-left: .48rem;
         h5 {
-          font-size: 32px;
-          padding-bottom: 20px;
+          font-size: .426667rem;
+          padding-bottom: .266667rem;
           font-weight: normal;
         }
 
         p {
-          font-size: 26px;
+          font-size: .346667rem;
           color: #999;
         }
       }

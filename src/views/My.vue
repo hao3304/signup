@@ -7,10 +7,10 @@
           <i></i>
         </div>
         <div class="page-my__content-mobile">
-          15068218600
+          jack
         </div>
 
-        <p class="page-my__content-card">身份证：330482198901122332</p>
+        <p class="page-my__content-card">15068218600</p>
       </div>
       <group>
         <cell title="个人信息" is-link></cell>
@@ -49,44 +49,44 @@
 
     .logout-button {
       background-color: #fff;
-      margin-top: 30px;
-      height: 100px;
+      margin-top: .4rem;
+      height: 1.333333rem;
     }
 
 
     &__content {
       position: absolute;
-      top: 100px;
+      top: 1.333333rem;
       left: 0;
       right: 0;
       bottom: 0;
       overflow-y: auto;
       background-color: #f2f2f2;
       box-sizing: border-box;
-      padding: 20px 15px;
+      padding: .266667rem .2rem;
 
       .weui-cell {
-        height: 100px;
-        line-height: 100px;
+        height: 1.333333rem;
+        line-height: 1.333333rem;
         box-sizing: border-box;
-        padding: 0 40px;
+        padding: 0 .533333rem;
       }
 
       &-info {
         background-color: #fff;
-        height: 380px;
-        border-radius: 6px;
+        height: 5.066667rem;
+        border-radius: .08rem;
         overflow: hidden;
       }
 
       &-pic {
         text-align: center;
-        margin-top: 50px;
+        margin-top: .666667rem;
         font-size: 0;
         i {
           display: inline-block;
-          height: 154px;
-          width: 154px;
+          height: 2.053333rem;
+          width: 2.053333rem;
           border-radius: 50%;
           background: url("~@/assets/news2.png") no-repeat;
           background-size: cover;
@@ -95,13 +95,13 @@
 
       &-mobile {
         text-align: center;
-        font-size: 48px;
-        margin-top: 34px;
+        font-size: .64rem;
+        margin-top: .453333rem;
       }
 
       &-card{
         text-align: center;
-        font-size: 30px;
+        font-size: .4rem;
         color: #666;
       }
     }

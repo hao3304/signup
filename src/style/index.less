@@ -8,11 +8,12 @@ body,html {
 
 .app {
   .weui-btn {
-    font-size: 34px;
+    font-size: .453333rem;
   }
   .vux-label {
-    font-size: 32px;
+    font-size: .426667rem;
   }
+
 
   .weui-cell {
     padding-top: 0;
@@ -20,20 +21,28 @@ body,html {
   }
 
   .weui-cell_select .weui-select {
-    padding-right: 40px;
+    padding-right: .533333rem;
   }
 
   .weui-cell_access .weui-cell__ft{
-    padding-right: 35px;
+    padding-right: .466667rem;
+    text-align: left;
   }
 
+  .weui-cell_access p {
+    width: 105px;
+    text-align: left;
+  }
+  .weui-toast__content {
+    color: #fff !important;
+  }
   .weui-cell__ft {
     i {
-      font-size: 32px;
+      font-size: .426667rem;
     }
   }
   .weui-cell_select .weui-cell__bd:after {
-    right: 0.2rem;
+    right: 0.42rem;
   }
   //.scroller-item {
   //  font-size: 32px;
@@ -43,3 +52,49 @@ body,html {
 
 }
 
+
+.page-register {
+  background-color: #fff;
+  height: 100%;
+  &__content {
+    padding: 0 .333333rem 1.333333rem .333333rem;
+    position: absolute;
+    top: 1.333333rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+
+    h5 {
+      text-align: center;
+      margin: 0;
+      padding-top: .666667rem;
+      font-size: .506667rem;
+      font-weight: 400;
+    }
+
+    p {
+      text-align: center;
+      margin: 0;
+      padding-bottom: 0;
+      font-size: .32rem;
+      color: #666;
+    }
+
+    .weui-cell{
+      height: 1.333333rem;
+      font-size: .4rem;
+      p {
+        color: #000;
+        font-size: .4rem;
+      }
+    }
+
+
+    .weui-btn {
+      height: 1.2rem;
+      margin-top: .6rem;
+    }
+
+  }
+}

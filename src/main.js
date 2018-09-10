@@ -6,12 +6,29 @@ import VueRouter from 'vue-router'
 import Main from './Main.vue'
 import 'lib-flexible'
 import MuseUI from 'muse-ui'
-import 'muse-ui/dist/muse-ui.css'
 import vueg from 'vueg'
+import 'muse-ui/dist/muse-ui.css'
 import 'vueg/css/transition-min.css'
+import VeeValidate from 'vee-validate';
+import dict from '@/components/dict'
+import  { ToastPlugin, LoadingPlugin, AlertPlugin } from 'vux'
+import store from '@/store'
+import Storage from 'vue-ls';
 
+const options = {
+  namespace: 'vuejs__', // key prefix
+  name: 'ls', // name variable Vue.[ls] or this.[$ls],
+  storage: 'local', // storage name session, local, memory
+};
+
+Vue.use(Storage, options)
+Vue.use(LoadingPlugin)
+Vue.use(ToastPlugin)
+Vue.use(AlertPlugin)
 Vue.use(MuseUI)
 Vue.use(VueRouter)
+Vue.use(VeeValidate)
+
 import router from '@/router'
 
 FastClick.attach(document.body)
@@ -23,5 +40,9 @@ Vue.use(vueg, router)
 /* eslint-disable no-new */
 new Vue({
   router,
-  render: h => h(Main)
+  store,
+  render: h => h(Main),
+  created() {
+    this.$validator.localize('zh', dict);
+  }
 }).$mount('#app-box')

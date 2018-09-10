@@ -5,16 +5,16 @@
         <div class="page-login__logo">
         </div>
       <div class="page-login__form">
-         <mu-text-field v-model="form.mobile" placeholder="请输入手机号" full-width></mu-text-field>
+         <mu-text-field v-model="form.username" placeholder="请输入手机号" full-width></mu-text-field>
          <mu-text-field v-model="form.password"  placeholder="请输入密码" type="password" full-width></mu-text-field><br/>
          <div class="page-login__button">
-           <mu-button full-width large  color="success">登录</mu-button>
+           <mu-button full-width large @click="onLogin"  color="success">登录</mu-button>
          </div>
 
         <p class="page-login__bottom">
           <a href="javascript:;" style="color:#666;" @click="onSignUp">注册账号</a>
           |
-          <a href="javascript:;">忘记密码？</a>
+          <a href="javascript:;" @click="onRepair">忘记密码？</a>
         </p>
 
       </div>
@@ -23,13 +23,16 @@
 </template>
 <script>
   import CHeader from '@/components/CHeader.vue'
+  import Service from '@/services'
+  import { mapMutations } from 'vuex'
+
   export default {
     name: "Login",
     data() {
       return {
         form: {
-          mobile: '15068218888',
-          password: '123456'
+          username: '15068218601',
+          password: 'hao123456'
         }
       }
     },
@@ -37,11 +40,27 @@
       CHeader
     },
     methods: {
+      ...mapMutations(['setToken']),
       onClick() {
         this.$router.push({name: 'home'})
       },
       onSignUp() {
         this.$router.push({name: 'signup'})
+      },
+      onRepair() {
+        this.$router.push({name: 'repair'})
+      },
+      onLogin() {
+        this.$vux.loading.show({
+          text: '登录中'
+        })
+        Service.login(this.form).then(rep => {
+          this.$vux.loading.hide()
+          this.setToken(rep)
+          this.$ls.set('token', rep, 3600 * 1000)
+          this.$router.push({name: 'home'})
+        })
+
       }
     }
   }

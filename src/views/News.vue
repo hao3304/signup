@@ -33,7 +33,7 @@
 
     &__content {
       position: absolute;
-      top: 100px;
+      top: 1.333333rem;
       bottom: 0;
       left: 0;
       right: 0;
@@ -42,15 +42,15 @@
     }
 
     &__section {
-      height: 300px;
-      line-height: 300px;
+      height: 4rem;
+      line-height: 4rem;
       text-align: center;
       width: 100%;
-      text-shadow: 0px 9px 17px 4px
+      text-shadow: 0px 0.12rem .226667rem 053333rem
       rgba(0, 0, 0, 0.35);
       color: #fff;
-      font-size: 36px;
-      margin-top: 13px;
+      font-size: .48rem; 
+      margin-top: .173333rem;
 
       &:nth-child(1) {
         background: url("~@/assets/news1.png") no-repeat;

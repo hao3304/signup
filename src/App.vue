@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="app__content">
-      <router-view></router-view>
+      <router-view> </router-view>
     </div>
     <div class="app__bottom-tab">
       <tabbar v-model="active" @on-index-change="onChange">
@@ -27,16 +27,16 @@
             icon: 'iconfont icon-shouye',
             path: 'home'
           },
-          {
-            name: '资讯',
-            icon: 'iconfont icon-jinrongzixun',
-            path: 'news'
-          },
-          {
-            name: '查询',
-            icon: 'iconfont icon-chaxun',
-            path: 'search'
-          },
+          // {
+          //   name: '资讯',
+          //   icon: 'iconfont icon-jinrongzixun',
+          //   path: 'news'
+          // },
+          // {
+          //   name: '查询',
+          //   icon: 'iconfont icon-chaxun',
+          //   path: 'search'
+          // },
           {
             name: '我的',
             icon: 'iconfont icon-wode',
@@ -66,7 +66,7 @@
     .app__content {
       position: absolute;
       top:0;
-      bottom: 104px;
+      bottom: 1.386667rem;
       left: 0;
       right: 0;
     }
@@ -74,23 +74,23 @@
     .app__bottom-tab {
 
       .weui-tabbar {
-        height: 104px;
+        height: 1.386667rem;
         &__item {
           padding: 0;
         }
         &__icon {
-          width: 50px;
-          height: 50px;
+          width: .666667rem;
+          height: .666667rem;
         }
 
         &__label {
-          margin-top: 5px;
-          font-size: 20px;
+          margin-top: .066667rem;
+          font-size: .266667rem;
         }
       }
 
       .iconfont {
-        font-size: 50px;
+        font-size: .666667rem;
       }
     }
   }

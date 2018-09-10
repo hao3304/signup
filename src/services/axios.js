@@ -1,7 +1,5 @@
 import axios, { AxiosResponse } from 'axios'
 import config from '@/config'
-import { Message } from 'element-ui'
-
 
 const service = axios.create({
     baseURL: config.requestBase,
@@ -15,11 +13,12 @@ service.interceptors.response.use( res => {
     if (res.data.code === 0) {
         return res.data.data
     } else {
-        Message.error(res.data.message)
+        alert(res.data.data)
         return Promise.reject(res.data)
     }
 }, error => {
-    Message.error(error.response.data)
+  alert(res.data.data)
+    // Message.error(error.response.data)
 })
 
 export default service

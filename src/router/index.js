@@ -8,6 +8,7 @@ import Login from '@/views/Login'
 import Register from '@/views/Register'
 import Sign from '@/views/Sign'
 import SignUp from '@/views/SignUp'
+import Repair from '@/views/Repair'
 import App from '../App'
 
 Vue.use(Router)
@@ -20,12 +21,12 @@ export default new Router({
       component: Login
     },
     {
-      path: '/register',
+      path: '/main/register',
       name: 'register',
       component: Register
     },
     {
-      path: '/sign',
+      path: '/main/sign',
       name: 'sign',
       component: Sign
     },
@@ -35,8 +36,12 @@ export default new Router({
       component: SignUp
     },
     {
+      path: '/repair',
+      name: 'repair',
+      component: Repair
+    },
+    {
       path: '/app',
-      name: 'app',
       component: App,
       children: [
         {

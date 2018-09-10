@@ -1,13 +1,10 @@
 <template>
   <div class="page-register">
-    <c-header :left="true" @left-click="onBack" title="自助报到"></c-header>
+    <c-header :left="true" @left-click="onBack" title="退役士兵报到"></c-header>
     <div class="page-register__content">
-      <h5>身份证号码认证</h5>
-      <p>
-        请输入二代身份证号码，用于验证身份信息。
-      </p>
-      <input type="text" placeholder="请输入身份证号码">
-      <x-button type="primary">完成</x-button>
+      <step-zero @submit="onNext" v-if="step == 0"></step-zero>
+      <step-one @submit="onNext" v-if="step == 1"></step-one>
+      <step-two @complete="onComplete" v-if="step == 2"></step-two>
     </div>
   </div>
 </template>
@@ -15,57 +12,60 @@
 <script>
   import CHeader from '@/components/CHeader.vue'
   import { XButton } from 'vux'
+  import { mapState } from 'vuex'
+  import Service from '@/services'
+  import StepZero from '@/components/StepZero.vue'
+  import StepOne from '@/components/StepOne.vue'
+  import StepTwo from '@/components/StepTwo.vue'
+
   export default {
     name: "Register",
     components: {
       CHeader,
-      XButton
+      XButton,
+      StepZero,
+      StepOne,
+      StepTwo
+    },
+    data() {
+      return {
+        step: null
+      }
+    },
+    computed: {
+      ...mapState(['token'])
     },
     methods: {
       onBack() {
         this.$router.push({name: 'home'})
+      },
+      getStep() {
+        this.$vux.loading.show()
+        Service.getStep({user_id: this.token}).then(rep => {
+          this.$vux.loading.hide()
+          this.step = rep
+        })
+      },
+      onNext() {
+        this.getStep()
+      },
+      onComplete() {
+
+        this.$vux.alert.show({
+          title: '提示',
+          content: '报到信息提交成功，请勿重复提交！',
+          onHide: () => {
+            this.onBack()
+          }
+        })
+
       }
+    },
+    mounted() {
+      this.getStep()
     }
   }
 </script>
 
 <style lang="less">
-  .page-register {
-    &__content {
-      padding: 0 25px;
-      h5 {
-        text-align: center;
-        margin: 0;
-        padding-top: 50px;
-        padding-bottom: 35px;
-        font-size: 38px;
-        font-weight: 400;
-      }
-
-      p {
-        text-align: center;
-        margin: 0;
-        padding-bottom: 0;
-        font-size: 24px;
-        color: #666;
-      }
-
-      input {
-        width: 100%;
-        height: 90px;
-        background-color: #fcfcfc;
-        border-radius: 10px;
-        border: solid 2px #c8c8c8;
-        font-size: 30px;
-        text-align: center;
-        margin-top: 130px;
-      }
-
-      .weui-btn {
-        height: 90px;
-        margin-top: 45px;
-      }
-
-    }
-  }
 </style>

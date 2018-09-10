@@ -4,22 +4,19 @@
       <mu-button icon @click='onBack' slot="left">
         <mu-icon value="keyboard_arrow_left"></mu-icon>
       </mu-button>
-      注册
+      忘记密码
     </mu-appbar>
     <div class="page-signup__content">
       <mu-text-field v-model="form.username" name="username" v-validate="{required: true, max: 20}" placeholder="请输入手机号" :error-text="errors.first('username')" full-width>
-        <mu-button :disabled="time > 0" @click='getAuthCode' small color='error'>
-          {{btnName}}
-        </mu-button>
+        <mu-button :disabled="time > 0" @click='getAuthCode' small color='error'>{{btnName}}</mu-button>
       </mu-text-field>
-      <mu-text-field v-model="code" name="code" v-validate="{required: true, max: 20}"  :error-text="errors.first('code')" placeholder="请输入验证码" full-width>
-      </mu-text-field>
-      <mu-text-field v-model="form.nickname" placeholder="请输入昵称" name="nickname" v-validate="{required: true, max: 20}" :error-text="errors.first('nickname')" full-width>
+      <mu-text-field v-model="form.authcode" name="code" v-validate="{required: true, max: 20}"  :error-text="errors.first('code')" placeholder="请输入验证码" full-width>
       </mu-text-field>
       <mu-text-field v-model="form.password" name="password" v-validate="{required: true, min: 6, max: 20}" placeholder="请输入密码（至少6位）" :error-text="errors.first('password')"  type="password" full-width>
       </mu-text-field>
-      <mu-button full-width large color='success' @click="onSubmit" >注册</mu-button>
-      <p>已有账号，请<a @click='onBack' href="javascript:;">登录</a></p>
+      <mu-text-field v-model="password2" name="password" placeholder="请再次输入密码"  type="password" full-width>
+      </mu-text-field>
+      <mu-button full-width large color='success' @click="onSubmit" >重置并登录</mu-button>
     </div>
   </div>
 </template>
@@ -31,10 +28,10 @@
       return {
         form: {
           username: '',
-          nickname: '',
-          password: ''
+          password: '',
+          authcode: ''
         },
-        code: null,
+        password2: '',
         time: 0
       }
     },
@@ -46,8 +43,6 @@
           return '获取验证码'
         }
       }
-    },
-    mounted() {
     },
     methods: {
       onBack() {
@@ -71,31 +66,41 @@
           }
         }, 1000)
 
-
         Service.getAuthCode({
-          phonenum: '15068218600',
+          phonenum: this.form.username,
           method: 'register'
         }).then(rep => {
-          this.code = rep
+          this.form.authcode = rep
         })
       },
       onSubmit() {
         this.$validator.validate().then(valid => {
-          if(!valid) return;
-          this.$vux.loading.show({text: '提交中'})
-          Service.register(this.form).then(rep => {
-            this.$vux.loading.hide()
-            this.$vux.alert.show({
-              title: '提示',
-              content: rep,
-              onHide: () => {
-                this.onBack()
-              }
-            })
+          if(valid) {
 
-          }).catch(() => {
-            this.$vux.loading.hide()
-          })
+            if(this.form.password != this.password2) {
+              return this.$vux.toast.show({
+                text: '两次输入密码不一致！',
+                width: '10em',
+                type: 'text',
+                position: 'top'
+              })
+            }
+
+            this.$vux.loading.show({text: '提交中'})
+            Service.resetpsd(this.form).then(rep => {
+              this.$vux.loading.hide()
+              this.$vux.alert.show({
+                title: '提示',
+                content: rep,
+                onHide: () => {
+                  this.onBack()
+                }
+              })
+            }).catch(()=> {
+              this.$vux.loading.hide()
+            })
+          }
+
         })
       }
     }
