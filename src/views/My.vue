@@ -9,14 +9,12 @@
         <div class="page-my__content-mobile">
           jack
         </div>
-
         <p class="page-my__content-card">15068218600</p>
       </div>
       <group>
         <cell title="个人信息" is-link></cell>
         <cell title="投诉建议" is-link></cell>
       </group>
-
       <x-button @click.native="onLogout" class="logout-button">退出登录</x-button>
     </div>
   </div>
@@ -25,6 +23,8 @@
 <script>
   import CHeader from '@/components/CHeader.vue'
   import { Group, Cell, XButton} from 'vux'
+  import { mapMutations } from 'vuex'
+
   export default {
     name: "My",
     components: {
@@ -34,8 +34,19 @@
       XButton
     },
     methods: {
+      ...mapMutations(['logout']),
       onLogout() {
-        this.$router.push({name: 'login'})
+
+        this.$vux.confirm.show({
+          title: '提示',
+          content: '确定退出当前用户？',
+          onCancel () {
+          },
+          onConfirm: () => {
+            this.logout()
+            this.$router.push({name: 'login'})
+          }
+        })
       }
     }
   }

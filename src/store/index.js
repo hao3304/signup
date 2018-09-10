@@ -10,6 +10,9 @@ export default new vuex.Store({
   mutations: {
     setToken(state, payload) {
       state.token = payload
+    },
+    logout(state) {
+      state.token = null
     }
   },
   actions: {

@@ -11,7 +11,7 @@ import 'muse-ui/dist/muse-ui.css'
 import 'vueg/css/transition-min.css'
 import VeeValidate from 'vee-validate';
 import dict from '@/components/dict'
-import  { ToastPlugin, LoadingPlugin, AlertPlugin } from 'vux'
+import  { ToastPlugin, LoadingPlugin, AlertPlugin, ConfirmPlugin } from 'vux'
 import store from '@/store'
 import Storage from 'vue-ls';
 
@@ -24,6 +24,7 @@ const options = {
 Vue.use(Storage, options)
 Vue.use(LoadingPlugin)
 Vue.use(ToastPlugin)
+Vue.use(ConfirmPlugin)
 Vue.use(AlertPlugin)
 Vue.use(MuseUI)
 Vue.use(VueRouter)

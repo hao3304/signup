@@ -31,8 +31,8 @@
     data() {
       return {
         form: {
-          username: '15068218601',
-          password: 'hao123456'
+          username: '',
+          password: ''
         }
       }
     },
