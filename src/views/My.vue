@@ -4,12 +4,12 @@
     <div class="page-my__content">
       <div class="page-my__content-info">
         <div class="page-my__content-pic">
-          <i></i>
+          <img :src="user.nickimg | image" alt="">
         </div>
         <div class="page-my__content-mobile">
-          jack
+          {{user.realname}}
         </div>
-        <p class="page-my__content-card">15068218600</p>
+        <p class="page-my__content-card">{{user.phonenum}}</p>
       </div>
       <group>
         <cell title="个人信息" is-link></cell>
@@ -23,7 +23,8 @@
 <script>
   import CHeader from '@/components/CHeader.vue'
   import { Group, Cell, XButton} from 'vux'
-  import { mapMutations } from 'vuex'
+  import { mapMutations, mapState } from 'vuex'
+  import Service from '@/services'
 
   export default {
     name: "My",
@@ -32,6 +33,18 @@
       Group,
       Cell,
       XButton
+    },
+    data() {
+      return {
+        user: {
+          realname: '',
+          nickimg: '',
+          phonenum: ''
+        }
+      }
+    },
+    computed: {
+        ...mapState(['token'])
     },
     methods: {
       ...mapMutations(['logout']),
@@ -47,7 +60,19 @@
             this.$router.push({name: 'login'})
           }
         })
+      },
+      render() {
+        this.$vux.loading.show()
+        Service.getuserbaseinfo({user_id: this.token}).then(rep => {
+            this.user = rep[0]
+            this.$vux.loading.hide()
+        })
+
+
       }
+    },
+    created() {
+        this.render()
     }
   }
 </script>
@@ -94,12 +119,12 @@
         text-align: center;
         margin-top: .666667rem;
         font-size: 0;
-        i {
+        img {
           display: inline-block;
           height: 2.053333rem;
           width: 2.053333rem;
           border-radius: 50%;
-          background: url("~@/assets/news2.png") no-repeat;
+          background-repeat: no-repeat;
           background-size: cover;
         }
       }

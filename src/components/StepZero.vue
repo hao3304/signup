@@ -23,7 +23,7 @@
         <x-input ref="shenti"  label-width="105px" :max="18"  required title="身体状况" placeholder="请输入身体状况" v-model="form.shenti"></x-input>
         <selector ref="wenhua_id" label-width="105px" required placeholder="请选择文化程度" title="文化程度" v-model="form.wenhua_id" :options="wenhua"></selector>
         <x-input ref="address"  label-width="105px" :max="50"  required title="家庭地址" placeholder="请输入家庭地址" v-model="form.address"></x-input>
-        <x-input ref="phonenum"  label-width="105px"   required title="联系号码" keyboard="number"  mask="999 9999 9999" is-type="china-mobile" placeholder="请输入联系号码" v-model="form.phonenum"></x-input>
+        <x-input ref="phonenum"  label-width="105px"   required title="联系号码" keyboard="number"  is-type="china-mobile" placeholder="请输入联系号码" v-model="form.phonenum"></x-input>
       </group>
       <x-button action-type="submit" type="primary" @click.native="onSubmit">下一步</x-button>
 
@@ -128,9 +128,20 @@
             type: 'warn'
           })
         }
+      },
+      getMz() {
+        Service.getmzlist({user_id: this.token}).then(rep => {
+          this.mz = rep.map(item => {
+            return {
+              key: item.mz_id,
+              value: item.name
+            }
+          })
+        })
       }
     },
-    mounted() {
+    created() {
+      this.getMz()
     }
   }
 </script>

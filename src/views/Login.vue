@@ -59,6 +59,8 @@
           this.setToken(rep)
           this.$ls.set('token', rep, 3600 * 1000)
           this.$router.push({name: 'home'})
+        }).catch(() => {
+          this.$vux.loading.hide()
         })
 
       }

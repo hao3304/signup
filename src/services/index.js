@@ -30,5 +30,11 @@ export default {
   },
   setuserzhiyuaninfo(params) {
     return axios.get('setuserzhiyuaninfo', {params})
-  }
+  },
+  getmzlist(params) {
+    return axios.get('getmzlist', {params})
+  },
+  getuserbaseinfo(params) {
+    return axios.get('getuserbaseinfo', {params})
+  },
 }

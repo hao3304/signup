@@ -21,6 +21,11 @@ const options = {
   storage: 'local', // storage name session, local, memory
 };
 
+Vue.filter('image', (val) => {
+  return 'http://www.lvsoftware.cn:85/school/images/' + val
+})
+
+
 Vue.use(Storage, options)
 Vue.use(LoadingPlugin)
 Vue.use(ToastPlugin)
