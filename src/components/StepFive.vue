@@ -1,34 +1,20 @@
 <template>
   <div class="page-register__step--1" >
     <div>
-      <h5>请填写部队信息</h5>
-
+      <h5>请填写志愿资料</h5>
+      <divider>第一志愿</divider>
       <group>
 
-        <datetime ref="joinpdate" format="YYYY-MM-DD" required label-width="105px" placeholder="请选择入党时间" title="入党时间" v-model="form.joinpdate"></datetime>
-        <datetime ref="joinadate" format="YYYY-MM-DD" required label-width="105px" placeholder="请选择入伍时间" title="入伍时间" v-model="form.joinadate"></datetime>
-        <x-input ref="armylong" label-width="105px" type="number" :max="2" required title="军龄" placeholder="请输入军龄" v-model="form.armylong"></x-input>
-        <x-input ref="shengao" label-width="105px" type="number" :max="3" required title="身高" placeholder="请输入身高（厘米）" v-model="form.shengao"></x-input>
-        <x-input ref="area" label-width="105px" :max="20" required title="服役地区" placeholder="请输入服役地区" v-model="form.area"></x-input>
-        <x-input ref="armyname" label-width="105px" :max="20" required title="部队名称" placeholder="请输入部队名称（番号）" v-model="form.armyname"></x-input>
-        <selector ref="armytypeid"  label-width="105px"  required  placeholder="请选择部队类型" title="部队类别" v-model="form.armytypeid" :options="armytype"></selector>
-        <x-input ref="zhiwu" label-width="105px" :max="20" required title="职务" placeholder="请输入职务" v-model="form.zhiwu"></x-input>
-        <x-input ref="zhuanye" label-width="105px" :max="20" required title="专业" placeholder="请输入专业" v-model="form.zhuanye"></x-input>
-        <x-input ref="tuiyicode" label-width="105px" :max="50" required title="退役证件号" placeholder="请输入退役证件号" v-model="form.tuiyicode"></x-input>
-        <x-input ref="ligong" label-width="105px" :max="200" required title="立功情况" placeholder="请输入立功情况" v-model="form.ligong"></x-input>
-        <selector ref="joinpx"  label-width="105px"  required  placeholder="是否参加过职业培训" title="职业培训" v-model="form.joinpx" :options="px"></selector>
-
-
-        <!--<selector ref="hk_type"  label-width="105px"  required  placeholder="请选择户口类型" title="户口类型" v-model="form.hk_type" :options="hk"></selector>-->
-        <!--<x-input ref="hk_address" label-width="105px" :max="50" required title="户口地址" placeholder="请输入户口地址" v-model="form.hk_address"></x-input>-->
-        <!--<x-input ref="jt_address" label-width="105px" :max="50" required title="家庭地址" placeholder="请输入户口地址" v-model="form.jt_address"></x-input>-->
-        <!--<x-input  ref="callname" label-width="105px" :max="10"   required title="称谓" placeholder="请输入称谓（老婆）" v-model="form.callname"></x-input>-->
-        <!--<x-input  ref="name" label-width="105px" :max="10"   required title="姓名" placeholder="请输入姓名" v-model="form.name"></x-input>-->
-        <!--<x-input  ref="danwei" label-width="105px" :max="50"   required title="单位名称" placeholder="请输入单位名称" v-model="form.danwei"></x-input>-->
-        <!--<x-input  ref="phonenum" label-width="105px"   required title="联系电话" keyboard="number"  mask="999 9999 9999" placeholder="请输入联系号码" is-type="china-mobile"  v-model="form.phonenum"></x-input>-->
-
+        <x-input ref="name1" label-width="105px" :max="30" required title="志愿名称" placeholder="请输入第一志愿名称" v-model="form.name1"></x-input>
+        <x-input ref="jigou1" label-width="105px" :max="50" required title="学校和机构" placeholder="请输入承训学校和机构" v-model="form.jigou1"></x-input>
+        <x-input ref="zhuanye1" label-width="105px" :max="50" required title="培训专业" placeholder="请输入自愿选择的培训专业" v-model="form.zhuanye1"></x-input>
       </group>
-      <x-textarea  placeholder="请输入备注信息" :max="400" v-model="form.ex"></x-textarea>
+      <divider>第二志愿</divider>
+      <group>
+        <x-input ref="name2" label-width="105px" :max="30" required title="志愿名称" placeholder="请输入第二志愿名称" v-model="form.name2"></x-input>
+        <x-input ref="jigou2" label-width="105px" :max="50" required title="学校和机构" placeholder="请输入承训学校和机构" v-model="form.jigou2"></x-input>
+        <x-input ref="zhuanye2" label-width="105px" :max="50" required title="培训专业" placeholder="请输入自愿选择的培训专业" v-model="form.zhuanye2"></x-input>
+      </group>
 
       <x-button style="margin-top: 100px;" action-type="submit" type="primary" @click.native="onSubmit">提交</x-button>
 
@@ -44,24 +30,17 @@
 
   const model = () => {
     return {
-      joinpdate: '',
-      joinadate: '',
-      armylong: '',
-      shengao: '',
-      area: '',
-      armyname: '',
-      armytypeid: null,
-      zhiwu: '',
-      zhuanye: '',
-      tuiyicode: '',
-      ligong: '',
-      joinpx: null,
-      ex: ''
+      name1: '',
+      jigou1: '',
+      zhuanye1: '',
+      name2: '',
+      jigou2: '',
+      zhuanye2: ''
     }
   }
 
   export default {
-    name: "StepTwo",
+    name: "StepFive",
     computed: {
       ...mapState(['token'])
     },
@@ -71,8 +50,7 @@
       XInput,
       Selector,
       Datetime,
-      Divider,
-      XTextarea
+      Divider
     },
     data() {
       return {
@@ -109,7 +87,7 @@
         if(this.isValid()) {
           this.$vux.loading.show()
           this.form.user_id = this.token
-          Service.setuserarmyinfo(this.form).then(rep => {
+          Service.setuserzhiyuaninfo(this.form).then(rep => {
             this.$vux.loading.hide()
             this.$emit('complete')
           }).catch(()=> {

@@ -24,5 +24,11 @@ export default {
   },
   setuserarmyinfo(params) {
     return axios.get('setuserarmyinfo', {params})
+  },
+  setuserenterinfo(params) {
+    return axios.get('setuserenterinfo', {params})
+  },
+  setuserzhiyuaninfo(params) {
+    return axios.get('setuserzhiyuaninfo', {params})
   }
 }

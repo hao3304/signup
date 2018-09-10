@@ -2,8 +2,8 @@
   <div class="page-register">
     <c-header :left="true" @left-click="onBack" title="自助报名"></c-header>
     <div class="page-register__content">
-      <step-four v-show="step == 3"></step-four>
-      <step-five v-show="step == 4"></step-five>
+      <step-four @submit="onNext" v-show="step == 3"></step-four>
+      <step-five @complete="onComplete" v-show="step == 4"></step-five>
     </div>
   </div>
 </template>
@@ -37,8 +37,20 @@
           this.step = rep
         })
       },
+      onNext() {
+        this.getStep()
+      },
       onBack() {
         this.$router.push({name: 'home'})
+      },
+      onComplete() {
+        this.$vux.alert.show({
+          title: '提示',
+          content: '报名信息提交成功，请勿重复提交！',
+          onHide: () => {
+            this.onBack()
+          }
+        })
       }
     },
     mounted() {

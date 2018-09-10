@@ -49,6 +49,13 @@
               })
             }
 
+            if(rep == 5) {
+              return this.$vux.alert.show({
+                title: '提示',
+                content: '您已经申请过报名，无法再进行报到操作。'
+              })
+            }
+
             this.$router.push({name})
           })
 

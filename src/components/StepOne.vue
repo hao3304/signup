@@ -17,8 +17,10 @@
         <x-input  ref="name" label-width="105px" :max="10"   required title="姓名" placeholder="请输入姓名" v-model="form.name"></x-input>
         <x-input  ref="danwei" label-width="105px" :max="50"   required title="单位名称" placeholder="请输入单位名称" v-model="form.danwei"></x-input>
         <x-input  ref="phonenum" label-width="105px"   required title="联系电话" keyboard="number"  mask="999 9999 9999" placeholder="请输入联系号码" is-type="china-mobile"  v-model="form.phonenum"></x-input>
-        <x-button action-type="submit" type="primary" @click.native="onSubmit">下一步</x-button>
       </group>
+
+      <x-button action-type="submit" type="primary" @click.native="onSubmit">下一步</x-button>
+
     </div>
 
   </div>
