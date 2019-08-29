@@ -7,14 +7,14 @@
           <img :src="user.nickimg | image" alt="">
         </div>
         <div class="page-my__content-mobile">
-          {{user.realname}}
+          {{user.nickname}}
         </div>
         <p class="page-my__content-card">{{user.phonenum}}</p>
       </div>
-      <group>
-        <cell title="个人信息" is-link></cell>
-        <cell title="投诉建议" is-link></cell>
-      </group>
+      <!--<group>-->
+        <!--<cell title="个人信息" is-link></cell>-->
+        <!--<cell title="投诉建议" is-link></cell>-->
+      <!--</group>-->
       <x-button @click.native="onLogout" class="logout-button">退出登录</x-button>
     </div>
   </div>

@@ -33,7 +33,12 @@ Vue.use(ConfirmPlugin)
 Vue.use(AlertPlugin)
 Vue.use(MuseUI)
 Vue.use(VueRouter)
-Vue.use(VeeValidate)
+
+const config = {
+  errorBagName: 'errorBags', // change if property conflicts.
+  fieldsBagName: 'fieldBags',
+};
+Vue.use(VeeValidate, config)
 
 import router from '@/router'
 

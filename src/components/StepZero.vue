@@ -3,9 +3,9 @@
 
     <div v-show="form.areaid == null">
       <h5>选择报到区域</h5>
-      <x-button @click.native="setArea(0)">南湖区</x-button>
-      <x-button @click="setArea(1)">秀洲区</x-button>
-      <x-button @click="setArea(2)">经开区</x-button>
+      <x-button @click.native="setArea('0')">南湖区</x-button>
+      <x-button @click.native="setArea('1')">秀洲区</x-button>
+      <x-button @click.native="setArea('2')">经开区</x-button>
 
     </div>
 
@@ -17,7 +17,7 @@
         <x-input ref="idcard" label-width="105px" :max="18" required title="身份证号码" placeholder="请输入身份证号码" v-model="form.idcard"></x-input>
         <x-input  ref="realname" label-width="105px" :max="18"   required title="姓名" placeholder="请输入姓名" v-model="form.realname"></x-input>
         <selector ref="sexid"  label-width="105px"  required  placeholder="请选择性别" title="性别" v-model="form.sexid" :options="sex"></selector>
-        <!--<datetime ref="birthday" format="YYYY-MM-DD" required label-width="105px" placeholder="请选择出生日期" title="出生日期" v-model="form.birthday"></datetime>-->
+        <datetime ref="birthday" format="YYYY-MM-DD" :min-year="1949" required label-width="105px" placeholder="请选择出生日期" title="出生日期" v-model="form.birthday"></datetime>
         <selector ref="mz_id" label-width="105px" required  placeholder="请选择民族" title="民族" v-model="form.mz_id" :options="mz"></selector>
         <selector ref="political_id" label-width="105px"  required placeholder="请选择政治面貌" title="政治面貌" v-model="form.political_id" :options="political"></selector>
         <x-input ref="shenti"  label-width="105px" :max="18"  required title="身体状况" placeholder="请输入身体状况" v-model="form.shenti"></x-input>
@@ -49,7 +49,8 @@
       wenhua_id: null,
       address: '',
       phonenum: '',
-      user_id: ''
+      user_id: '',
+      birthday: ''
     }
   }
 

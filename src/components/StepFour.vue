@@ -85,7 +85,8 @@
           if(this.$refs[field]) {
             console.log(this.$refs[field])
             if(this.$refs[field].valid == false) {
-              valid = false
+              valid = false;
+              this.error = this.$refs[field].title;
             }
           }
         })
@@ -104,7 +105,7 @@
           })
         }else {
           this.$vux.toast.show({
-            text: '请填写完整或者填写正确格式',
+            text: `${this.error}不能为空！`,
             width: '5rem',
             type: 'warn'
           })

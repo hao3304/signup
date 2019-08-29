@@ -74,7 +74,7 @@
         const fields = model()
         Object.keys(fields).forEach(field => {
           if(this.$refs[field]) {
-            console.log(this.$refs[field])
+            console.log(this.$refs[field]);
             if(this.$refs[field].valid == false) {
               valid = false
             }

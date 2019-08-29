@@ -35,6 +35,7 @@
           password: ''
         },
         code: null,
+        code2: '',
         time: 0
       }
     },
@@ -73,13 +74,25 @@
 
 
         Service.getAuthCode({
-          phonenum: '15068218600',
+          phonenum: this.form.username,
           method: 'register'
         }).then(rep => {
-          this.code = rep
+          this.code2 = rep
         })
       },
       onSubmit() {
+
+        if(this.code != this.code2) {
+          return  this.$vux.alert.show({
+            title: '提示',
+            content: '验证码错误，请重新输入。',
+            onHide: () => {
+
+            }
+          })
+
+        }
+
         this.$validator.validate().then(valid => {
           if(!valid) return;
           this.$vux.loading.show({text: '提交中'})

@@ -56,8 +56,8 @@
         })
         Service.login(this.form).then(rep => {
           this.$vux.loading.hide()
-          this.setToken(rep)
-          this.$ls.set('token', rep, 3600 * 1000)
+          this.setToken(rep[0].user_id)
+          this.$ls.set('token', rep[0].user_id, 3600 * 1000)
           this.$router.push({name: 'home'})
         }).catch(() => {
           this.$vux.loading.hide()
@@ -102,6 +102,6 @@
 
 
     }
-  
+
   }
 </style>

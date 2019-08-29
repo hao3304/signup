@@ -7,7 +7,7 @@
       忘记密码
     </mu-appbar>
     <div class="page-signup__content">
-      <mu-text-field v-model="form.username" name="username" v-validate="{required: true, max: 20}" placeholder="请输入手机号" :error-text="errors.first('username')" full-width>
+      <mu-text-field v-model="form.username" name="phonenum" v-validate="{required: true, max: 20}" placeholder="请输入手机号" :error-text="errors.first('username')" full-width>
         <mu-button :disabled="time > 0" @click='getAuthCode' small color='error'>{{btnName}}</mu-button>
       </mu-text-field>
       <mu-text-field v-model="form.authcode" name="code" v-validate="{required: true, max: 20}"  :error-text="errors.first('code')" placeholder="请输入验证码" full-width>
@@ -27,7 +27,7 @@
     data() {
       return {
         form: {
-          username: '',
+          phonenum: '',
           password: '',
           authcode: ''
         },
@@ -70,7 +70,7 @@
           phonenum: this.form.username,
           method: 'register'
         }).then(rep => {
-          this.form.authcode = rep
+          // this.form.authcode = rep
         })
       },
       onSubmit() {
