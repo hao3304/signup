@@ -57,7 +57,8 @@
           },
           onConfirm: () => {
             this.logout()
-            this.$router.push({name: 'login'})
+            this.$router.push({name: 'login'});
+            this.$ls.set('token', '');
           }
         })
       },

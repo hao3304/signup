@@ -35,8 +35,8 @@ Vue.use(MuseUI)
 Vue.use(VueRouter)
 
 const config = {
-  errorBagName: 'errorBags', // change if property conflicts.
-  fieldsBagName: 'fieldBags',
+  // errorBagName: 'errorBags', // change if property conflicts.
+  // fieldsBagName: 'fieldBags',
 };
 Vue.use(VeeValidate, config)
 
