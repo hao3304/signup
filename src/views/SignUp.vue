@@ -55,7 +55,7 @@
         this.$router.push({ name: "login" });
       },
       getAuthCode() {
-        if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.form.username))){
+        if(!(/^1[0-9][1-9]\d{4,8}$/.test(this.form.username))){
           return this.$vux.toast.show({
             text: '请填写正确手机号码！',
             width: '10em',
